@@ -20,7 +20,9 @@ speed: 8
         fireball:{
 width: 20,
 height: 20,
-speed: 12
+speed: 12,
+nextSpawnTimeStamp: 0,
+maxSpawnInterval: 500
         },
       keys: {
         KeyA: false,

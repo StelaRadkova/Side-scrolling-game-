@@ -7,12 +7,16 @@ function gameLoop(state, game,timestamp) {
   const { fairyElement } = game;
   modifyFairyPosition(state, game);
   if(state.keys.Space){
-   game.createFireBall(fairy, state.fireball);
+    if(timestamp > state.fireball.nextSpawnTimeStamp){
+        game.createFireBall(fairy, state.fireball);
+        state.fireball.nextSpawnTimeStamp = timestamp + Math.random() *state.fireball.maxSpawnInterval;
+    }
+   
   }
 
   if(timestamp > state.cakeStats.nextSpawnTimeStamp){
     game.createCake(state.cakeStats);
-    state.cakeStats.nextSpawnTimeStamp = timestamp + Math.random() * state.cakeStats.maxSpawnInterval
+    state.cakeStats.nextSpawnTimeStamp = timestamp + state.cakeStats.maxSpawnInterval
   }
   let cakeElements =  document.querySelectorAll('.cake');
   cakeElements.forEach(cake =>{
