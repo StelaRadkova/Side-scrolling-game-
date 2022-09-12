@@ -21,6 +21,9 @@ function gameLoop(state, game,timestamp) {
   let cakeElements =  document.querySelectorAll('.cake');
   cakeElements.forEach(cake =>{
     let posX = parseInt(cake.style.left);
+    if(detectColision(fairyElement, cake)){
+        state.gameOver = true; 
+    }
     if(posX > 0){
 cake.style.left = posX - state.cakeStats.speed + 'px';
     }else{
@@ -43,8 +46,12 @@ fireball.remove();
 
   fairyElement.style.left = fairy.posX + "px";
   fairyElement.style.top = fairy.posY + "px";
- 
-  window.requestAnimationFrame(gameLoop.bind(null, state, game));
+ if(state.gameOver){
+    alert('Game over')
+}else{
+     window.requestAnimationFrame(gameLoop.bind(null, state, game));
+
+ }
 }
 function modifyFairyPosition(state, game){
     const { fairy } = state;
