@@ -20,6 +20,13 @@ cake.style.left = posX - state.cakeStats.speed + 'px';
     }else{
         cake.remove()
     }
+    document.querySelectorAll('.fireball').forEach(fireball => {
+        let posX = parseInt(fireball.style.left);
+        if(posX > game.gameScreen.offsetWidth){
+fireball.remove();
+        }
+        fireball.style.left = posX + state.fireball.speed + 'px';
+    })
  })
   fairyElement.style.left = fairy.posX + "px";
   fairyElement.style.top = fairy.posY + "px";

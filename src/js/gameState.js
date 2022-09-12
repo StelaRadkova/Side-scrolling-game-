@@ -19,7 +19,8 @@ speed: 8
         },
         fireball:{
 width: 20,
-height: 20
+height: 20,
+speed: 12
         },
       keys: {
         KeyA: false,
