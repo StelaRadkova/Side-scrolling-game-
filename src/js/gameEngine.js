@@ -10,7 +10,10 @@ function gameLoop(state, game,timestamp) {
     game.createCake(state.cakeStats);
     state.cakeStats.nextSpawnTimeStamp = timestamp + Math.random() * state.cakeStats.maxSpawnInterval
   }
- 
+ document.querySelectorAll('.cake').forEach(cake =>{
+    let posX = parseInt(cake.style.left);
+    cake.style.left = posX - state.cakeStats.speed + 'px';
+ })
   fairyElement.style.left = fairy.posX + "px";
   fairyElement.style.top = fairy.posY + "px";
  
