@@ -12,7 +12,9 @@ function initState(){
         },
         cakeStats: {
 width: 50,
-height: 50
+height: 50,
+nextSpawnTimeStamp: 0,
+maxSpawnInterval: 3000
         },
       keys: {
         KeyA: false,

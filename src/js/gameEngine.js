@@ -1,12 +1,16 @@
 function start(state, game) {
   game.createFairy(state.fairy);
-  window.requestAnimationFrame(gameLoop.bind(null, state, game));
+  window.requestAnimationFrame(timestamp => gameLoop(state, game,timestamp));
 }
-function gameLoop(state, game) {
+function gameLoop(state, game,timestamp) {
   const { fairy } = state;
   const { fairyElement } = game;
   modifyFairyPosition(state, game);
-  game.createCake(state.cakeStats)
+  if(timestamp > state.cakeStats.nextSpawnTimeStamp){
+    game.createCake(state.cakeStats);
+    state.cakeStats.nextSpawnTimeStamp = timestamp + Math.random() * state.cakeStats.maxSpawnInterval
+  }
+ 
   fairyElement.style.left = fairy.posX + "px";
   fairyElement.style.top = fairy.posY + "px";
  
