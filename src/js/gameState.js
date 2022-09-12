@@ -17,11 +17,16 @@ nextSpawnTimeStamp: 0,
 maxSpawnInterval: 3000,
 speed: 8
         },
+        fireball:{
+width: 20,
+height: 20
+        },
       keys: {
         KeyA: false,
         KeyS: false,
         KeyW: false,
         KeyD: false,
+        Space: false
       }
     }
     return state;

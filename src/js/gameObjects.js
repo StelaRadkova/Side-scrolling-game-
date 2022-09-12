@@ -16,6 +16,15 @@ return{
     gameScreen.appendChild(fairyElement)
     return fairyElement;
 },
+createFireBall(fairy, fireball){
+let fireBallEl = document.createElement('div');
+fireBallEl.classList.add('fireball');
+fireBallEl.style.left = fairy.posX + fairy.width + 'px';
+fireBallEl.style.top = fairy.posY + fairy.height / 2 + 'px';
+fireBallEl.style.width = fireball.width + 'px';
+fireBallEl.style.height = fireball.height + 'px';
+gameScreen.appendChild(fireBallEl);
+},
 createCake(stats){
     const cakeElement = document.createElement('div');
     cakeElement.classList.add('cake');
@@ -23,7 +32,7 @@ createCake(stats){
     cakeElement.style.height = stats.height + 'px';
     cakeElement.style.left = gameScreen.offsetWidth - stats.width + 'px';
     cakeElement.style.top = Math.floor(Math.random() * gameScreen.offsetHeight - stats.height) + 'px'
-    gameScreen.appendChild(cakeElement)
+    gameScreen.appendChild(cakeElement);
 }
 }
 }
