@@ -9,11 +9,13 @@ function gameLoop(state, game,timestamp) {
   if(state.keys.Space){
    game.createFireBall(fairy, state.fireball);
   }
+
   if(timestamp > state.cakeStats.nextSpawnTimeStamp){
     game.createCake(state.cakeStats);
     state.cakeStats.nextSpawnTimeStamp = timestamp + Math.random() * state.cakeStats.maxSpawnInterval
   }
- document.querySelectorAll('.cake').forEach(cake =>{
+  let cakeElements =  document.querySelectorAll('.cake');
+  cakeElements.forEach(cake =>{
     let posX = parseInt(cake.style.left);
     if(posX > 0){
 cake.style.left = posX - state.cakeStats.speed + 'px';
@@ -22,12 +24,19 @@ cake.style.left = posX - state.cakeStats.speed + 'px';
     }
     document.querySelectorAll('.fireball').forEach(fireball => {
         let posX = parseInt(fireball.style.left);
+        cakeElements.forEach(cake =>{
+            if (detectColision(cake, fireball)){
+                cake.remove();
+                fireball.remove()
+            }
+        })
         if(posX > game.gameScreen.offsetWidth){
 fireball.remove();
         }
         fireball.style.left = posX + state.fireball.speed + 'px';
     })
  })
+
   fairyElement.style.left = fairy.posX + "px";
   fairyElement.style.top = fairy.posY + "px";
  
@@ -47,4 +56,11 @@ function modifyFairyPosition(state, game){
       if (state.keys.KeyS) {
         fairy.posY = Math.min(fairy.posY + fairy.speed, game.gameScreen.offsetHeight - fairy.height);
       }
+}
+
+function detectColision(objectA, objectB){
+let first = objectA.getBoundingClientRect();
+let second = objectB.getBoundingClientRect();
+let hasCollision = !(first.top > second.bottom || first.bottom < second.top || first.right < second.left || first.left > second.right);
+return hasCollision;
 }
