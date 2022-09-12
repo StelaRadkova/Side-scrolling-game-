@@ -1,10 +1,11 @@
 function initObjects(){
 const startScreen = document.querySelector('.start-screen');
 const gameScreen = document.querySelector('.game-screen');
-
+const scoreScreen = document.querySelector('.score');
 return{
     startScreen,
     gameScreen,
+    scoreScreen,
    createFairy(initialState){
     let fairyElement = document.createElement('div');
     fairyElement.classList.add('fairy');

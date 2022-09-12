@@ -5,6 +5,7 @@ function start(state, game) {
 function gameLoop(state, game,timestamp) {
   const { fairy } = state;
   const { fairyElement } = game;
+  game.scoreScreen.textContent = `${state.score} pts.`
   modifyFairyPosition(state, game);
   if(state.keys.Space){
     if(timestamp > state.fireball.nextSpawnTimeStamp){
@@ -33,6 +34,7 @@ cake.style.left = posX - state.cakeStats.speed + 'px';
         let posX = parseInt(fireball.style.left);
         cakeElements.forEach(cake =>{
             if (detectColision(cake, fireball)){
+                state.score += state.killScore;
                 cake.remove();
                 fireball.remove()
             }
@@ -47,10 +49,10 @@ fireball.remove();
   fairyElement.style.left = fairy.posX + "px";
   fairyElement.style.top = fairy.posY + "px";
  if(state.gameOver){
-    alert('Game over')
+    alert(`Game over - You had ${state.score} pts`)
 }else{
      window.requestAnimationFrame(gameLoop.bind(null, state, game));
-
+state.score += state.scoreRate;
  }
 }
 function modifyFairyPosition(state, game){

@@ -4,6 +4,9 @@ function initState(){
     const state = {
         player: 'Niki',
         gameOver: false,
+        score: 0,
+        scoreRate: 1,
+        killScore: 1000,
         fairy: {
             width: 82,
             height: 100,
