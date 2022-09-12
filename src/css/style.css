@@ -30,7 +30,12 @@ transform: translate(-50%);
 .fairy{
     position: absolute;
     background-image: url('images/fairy.png');
-    background-size: cover  
+    background-size: cover; 
+}
+.cake{
+    position: absolute;
+    background-image: url('images/cupcake.png');
+    background-size: cover;
 }
 .hidden{
     display: none;

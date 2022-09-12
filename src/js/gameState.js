@@ -10,8 +10,15 @@ function initState(){
             posY: startY,
             speed: 10
         },
+        cakeStats: {
+width: 50,
+height: 50
+        },
       keys: {
-        
+        KeyA: false,
+        KeyS: false,
+        KeyW: false,
+        KeyD: false,
       }
     }
     return state;

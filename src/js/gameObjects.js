@@ -15,6 +15,15 @@ return{
     this.fairyElement = fairyElement;
     gameScreen.appendChild(fairyElement)
     return fairyElement;
+},
+createCake(stats){
+    const cakeElement = document.createElement('div');
+    cakeElement.classList.add('cake');
+    cakeElement.style.width = stats.width + 'px';
+    cakeElement.style.height = stats.height + 'px';
+    cakeElement.style.left = gameScreen.offsetWidth - stats.width + 'px';
+    cakeElement.style.top = Math.floor(Math.random() * gameScreen.offsetHeight - stats.height) + 'px'
+    gameScreen.appendChild(cakeElement)
 }
 }
 }
