@@ -12,7 +12,11 @@ function gameLoop(state, game,timestamp) {
   }
  document.querySelectorAll('.cake').forEach(cake =>{
     let posX = parseInt(cake.style.left);
-    cake.style.left = posX - state.cakeStats.speed + 'px';
+    if(posX > 0){
+cake.style.left = posX - state.cakeStats.speed + 'px';
+    }else{
+        cake.remove()
+    }
  })
   fairyElement.style.left = fairy.posX + "px";
   fairyElement.style.top = fairy.posY + "px";
